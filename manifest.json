@@ -5,7 +5,7 @@
     "version": "0.0.0.1",
     "homepage_url": "https://github.com/Belvrondil56/plug-in_Hipster",
     "icons": {
-        "48": "icons/logo_hipster.PNG"
+        "48": "icons/hipsters-48.PNG"
     },
     "background": {
         "scripts": ["background.js"]
