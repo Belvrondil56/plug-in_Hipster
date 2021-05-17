@@ -5,7 +5,7 @@
     "version": "0.0.0.1",
     "homepage_url": "https://github.com/Belvrondil56/plug-in_Hipster",
     "icons": {
-        "48": "icons/hipsters-48.PNG"
+        "48": "icons/hipsters-48.png"
     },
     "background": {
         "scripts": ["background.js"]
@@ -14,9 +14,7 @@
         "activeTab"
     ],
     "browser_action": {
-    "default_icon": {
-        "16": ""
-    },
+    "default_icon": "icons/hipsters-48.png",
     "default_popup": "popup.html"
 }
 }
