@@ -4,3 +4,5 @@ redirectionBtn.addEventListener("click", function(e) {
         url:"https://hipsters-feed.herokuapp.com"
     });
 })
+
+let onOffButton = document.getElementById("switch");
