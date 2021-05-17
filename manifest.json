@@ -2,7 +2,7 @@
     "description": "Ouvre une fenêtre qui montre les topics principaux de Hipsters",
     "manifest_version": 2,
     "name": "Hipsters-Plug-in",
-    "version": "0.0.0.1",
+    "version": "0.0.0.1", 
     "homepage_url": "https://github.com/Belvrondil56/plug-in_Hipster",
     "icons": {
         "48": "icons/hipsters-48.png"
@@ -10,11 +10,18 @@
     "background": {
         "scripts": ["background.js"]
     },
+    "options_ui": {
+        "page": "html/options.html",
+        "open_in_tab": true
+    },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "tabs",
+        "browserSettings",
+        "cookies"
     ],
     "browser_action": {
-    "default_icon": "icons/hipsters-48.png",
-    "default_popup": "popup.html"
-}
+        "default_icon": "icons/hipsters-48.png",
+        "default_popup": "popup.html"
+    }
 }
