@@ -1,5 +1,5 @@
-let tabs = document.getElementsByClassName("tabs");
-let content = document.getElementsByClassName("content")[0];
+const tabs = document.getElementsByClassName("tabs");
+const content = document.getElementsByClassName("content")[0];
 
 // get "/api/stories/tag/:tag" => "api/tags # find_stories_by_tags"
 // get "/api/stories" => "api/stories_api # find_all_stories"
@@ -19,7 +19,6 @@ for (var i = 0; i < tabs.length; i++) {
         btn.classList.add("selected")
 
         fetchFunc(toFetch)
-
     })
 }
 
@@ -49,35 +48,3 @@ function fetchFunc(toFetch) {
         console.error('Error:', error);
     });
 }
-let searchInput = document.getElementById("search-input");
-let searchSubmitBtn = document.getElementById("search-submit-btn");
-searchSubmitBtn.addEventListener("click", function(a){
-    filterFunc(searchSubmitBtn.value);
-    });
-
-function filterFunc(valeurRecherche) {
-    fetch('http://127.0.0.1:3000/tags.json')
-    .then(response => response.json())
-    .then(data => {
-        content.innerHTML +=
-            `<select name="tags">`+ tagList(data) + `</select>`  
-    })
-    
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-}
-
-function tagList(tags) {
-    selectList = "";
-    tags.forEach(tag => {
-        selectList += 
-        `
-        
-            <option class="tag" value="${tag["tag"]}">${tag["tag"]}</option>
-        
-        `;
-    })
-    return selectList;
-}
-filterFunc()

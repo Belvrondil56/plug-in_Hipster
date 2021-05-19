@@ -20,14 +20,17 @@
         
         <div id="container">
             <form action="#" id="search-form">
-                <input type="search" name="search" id="searchInput">
+                <input type="search" name="search" id="search-input" list="tag-list">
                 <button type="submit" id="search-submit-btn">Filtrer</button>
+                <datalist id="tag-list"></datalist>                
             </form>
             </div>
             <div class="content"></div>
-        </div>
+        </div>      
     </main>
 </body>
 
-<script src="flux.js"></script>
+<script src="js/flux.js"></script>
+<script src="js/tag_list.js"></script>
+<script src="js/filter.js"></script>
 </html>
