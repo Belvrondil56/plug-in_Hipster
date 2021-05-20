@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hipsters</title>
-    <link rel="stylesheet" href="flux.css">
+    <link rel="stylesheet" href="css/flux.css">
 </head>
 <body>
     <main id="content">
@@ -13,24 +13,32 @@
 
         <div id="tabs">
             <ul>
-                <li class="tabs selected" id="newest"><button id="newest-btn">Nouveau</button></li> 
+                <li class="tabs" id="newest"><button id="newest-btn">Nouveau</button></li> 
                 <li class="tabs" id="hottest"><button id="hottest-btn">Populaire</button></li> 
             </ul>
+            <form action="#" id="search-form">
+
+                <div class="group">      
+                    <input id="search-input" type="search" required name="search" autocomplete="off" list="tag-list">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Tag</label>
+                    <datalist id="tag-list"></datalist>
+                </div>
+
+            </form>
         </div>
         
         <div id="container">
-            <form action="#" id="search-form">
-                <input type="search" name="search" id="search-input" list="tag-list">
-                <button type="submit" id="search-submit-btn">Filtrer</button>
-                <datalist id="tag-list"></datalist>                
-            </form>
+            <div class="content">
+
             </div>
-            <div class="content"></div>
-        </div>      
+        </div>
+        
     </main>
 </body>
 
+<script src="js/tools.js"></script>
 <script src="js/flux.js"></script>
-<script src="js/tag_list.js"></script>
 <script src="js/filter.js"></script>
 </html>
