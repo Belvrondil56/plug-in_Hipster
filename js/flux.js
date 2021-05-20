@@ -77,16 +77,10 @@ function getStoryTags(story) {
     // Returns an array of tag nodes to append into the story element
     let tags = ""
     story["tags"].forEach(el => {
-        // tagBtn = document.createElement("div")
-        // tagBtn.click
-        tags += `<div class="tags">${el}</div>` 
-        // el.addEventListener("click", (e) => {
-        //     disableSelected()
-        //     fetchFunc("t/"+el)
-        // })
+        tags += `<a href="https://hipsters-feed.herokuapp.com/t/${el}" class="tags">${el}</a>` 
     })
     return tags
 }
 
 // ----- Default behavior when page loads -----
-tabs[0].click() // Clicks on button Newest and triggers the function fetchFunc("newest")
+tabs[0].click() // Clicks on button "Nouveau" and triggers the function fetchFunc("newest")
