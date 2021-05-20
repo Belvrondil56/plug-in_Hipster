@@ -1,29 +1,24 @@
-// Add a star before the tag menu, if clicked, 
-// we store the tag into a local variable to be reused by default next time
-// the user comes back to this page
-
-// localStorage.setItem('prefTag', TheTag);
-// const prefTag = localStorage.getItem('prefTag');
-
-let tabs = document.getElementsByClassName("tabs");
-let content = document.getElementsByClassName("content")[0];
+const tabs = document.getElementsByClassName("tabs");
+const content = document.getElementsByClassName("content")[0];
 
 for (var i = 0; i < tabs.length; i++) {
     tabs.item(i).addEventListener("click", (e) => {
 
+        disableSelected()
+
         let toFetch = e.currentTarget.getAttribute("id");
 
-        console.log(toFetch)
-
-        let selected = document.getElementsByClassName("selected")[0];
-        selected.classList.remove("selected")
-
+        // Adds the selected class to the tab that has been pressed using its id attribute
         let btn = document.getElementById(toFetch).children[0]; 
-        btn.classList.add("selected")
+        if (btn) { btn.classList.add("selected") }
 
         fetchFunc(toFetch)
-
     })
+}
+
+function disableSelected() { // Disables the tab that has the selected class if there is one
+    let selected = document.getElementsByClassName("selected")[0];
+    if (selected) { selected.classList.remove("selected") }
 }
 
 function fetchFunc(toFetch) {
@@ -38,26 +33,19 @@ function fetchFunc(toFetch) {
     .then(data => {
     
         console.log(data)
-        
-        // Empties the content before concatenating new content
-        content.innerHTML = ""
-    
+
+        let storyList = ""
         data.forEach(story => {
             date = new Date(story["created_at"])
-
-            let tags = ""
-            story["tags"].forEach(el => {
-                tags += `<div class="tags">${el}</div>`            
-            })
-
-            content.innerHTML +=
+            
+            storyList +=
             `
             <div class="story-wrapper">
                 <div class="story">
                     <a href="${story["short_id_url"]}"> <h2 class="title">${story["title"]}</h2> </a>
                     <div class="author-date-wrapper">
                         <div class="tags-wrapper">
-                            ${tags}
+                            ${getStoryTags(story)}
                         </div>
                         <div class="author"><strong>Auteur :</strong> ${story["submitter_user"]["username"]}</div>
                         <div class="date"><strong>Posté :</strong> il y a ${timeSince(date)}</div>
@@ -76,39 +64,29 @@ function fetchFunc(toFetch) {
             </div>
             `
         });
+        content.innerHTML = storyList;
     
     })
     .catch((error) => {
         console.error('Error:', error);
-        content.innerHTML = ` <div>Une erreur est survenue, impossible de charger le contenu.</div> `
+        content.innerHTML = ` <div>Aucun résultat</div> `
     });
 }
 
-function tagList(tags) {
-    selectList = "";
-    tags.forEach(tag => {
-        selectList += ` <option class="tag" value="${tag["tag"]}">${tag["tag"]}</option> `;
+function getStoryTags(story) {
+    // Returns an array of tag nodes to append into the story element
+    let tags = ""
+    story["tags"].forEach(el => {
+        // tagBtn = document.createElement("div")
+        // tagBtn.click
+        tags += `<div class="tags">${el}</div>` 
+        // el.addEventListener("click", (e) => {
+        //     disableSelected()
+        //     fetchFunc("t/"+el)
+        // })
     })
-    return selectList;
+    return tags
 }
 
-function fetchTagFunc() {
-    fetch('http://127.0.0.1:3000/tags.json', {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'plain/text;charset=UTF-8' }
-    })
-    .then(content.innerHTML = `<div class="lds-ring"><div></div><div></div><div></div><div></div></div>`)
-    .then(response => response.json())
-    .then(data => {
-        content.innerHTML = `<select name="tags">`+ tagList(data) + `</select>`
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        content.innerHTML = ` <div>Une erreur est survenue, impossible de charger le contenu.</div> `
-    });
-}
-
-// Default behavior when page loads
-fetchFunc("newest")
-// fetchTagFunc()
+// ----- Default behavior when page loads -----
+tabs[0].click() // Clicks on button Newest and triggers the function fetchFunc("newest")
