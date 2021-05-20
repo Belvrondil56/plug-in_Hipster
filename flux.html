@@ -9,21 +9,28 @@
 </head>
 <body>
     <main id="content">
-        <img src="img/hispters-logo.png" alt="Hipsters logo">
+        <img src="img/hispters-logo.png" alt="Hipsters logo"/>
 
         <div id="tabs">
             <ul>
-                <li class="tabs selected" id="newest"><button href="">Nouveau</button></li> 
-                <li class="tabs" id="hottest"><button href="">Populaire</button></li> 
+                <li class="tabs selected" id="newest"><button id="newest-btn">Nouveau</button></li> 
+                <li class="tabs" id="hottest"><button id="hottest-btn">Populaire</button></li> 
             </ul>
         </div>
         
         <div id="container">
+            <form action="#" id="search-form">
+                <input type="search" name="search" id="search-input" list="tag-list">
+                <button type="submit" id="search-submit-btn">Filtrer</button>
+                <datalist id="tag-list"></datalist>                
+            </form>
+            </div>
             <div class="content"></div>
-        </iframe>
-
+        </div>      
     </main>
 </body>
 
-<script src="flux.js"></script>
+<script src="js/flux.js"></script>
+<script src="js/tag_list.js"></script>
+<script src="js/filter.js"></script>
 </html>
