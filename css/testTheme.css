@@ -1,0 +1,25 @@
+:root {
+    --logo-color: #a9dc76;
+    --logo-icon-color: #2C292D;
+    --logo-text-color: #FFF;
+    --menu-link-color: #ffd866;
+    --menu-right-color: #fff;
+    --new-message-color: #fc9867;
+    --text-color: #DDD;
+    --legend-text-color: #fc9867;
+    --link-color: #78dce8;
+    --bg-color: #2C292D;
+    --bg-2-color:  #3D3B40;
+    --tag-color: #3D3B40;
+    --border-tag-color: #78dce8;
+    --font-tag-color: #78dce8;
+  
+    --story-title-color: #78dce8;
+    --story-title-visited-color:#fff;
+  
+    --text-color: #FFF;
+    --upvoted-color: #ff6188;
+  
+    --main-font-family: monospace;
+    --second-font-family: monospace;
+  }
