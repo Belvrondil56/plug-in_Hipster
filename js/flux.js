@@ -1,3 +1,11 @@
+
+myStorage = window.localStorage;
+
+// window.localStorage.setItem("test", "daValue")
+console.log(myStorage)
+
+
+
 const tabs = document.getElementsByClassName("tabs");
 const content = document.getElementsByClassName("content")[0];
 
@@ -47,17 +55,17 @@ function fetchFunc(toFetch) {
                         <div class="tags-wrapper">
                             ${getStoryTags(story)}
                         </div>
-                        <div class="author"><strong>Auteur :</strong> ${story["submitter_user"]["username"]}</div>
+                        <div class="author"><strong>Auteur :</strong><a href="${story[""]}"> ${story["submitter_user"]["username"]}</a></div>
                         <div class="date"><strong>Posté :</strong> il y a ${timeSince(date)}</div>
                     </div>
                     <div class="score-comments-wrapper">
                         <div class="score-wrapper">
                             <div class="score">${numFormatter(story["score"])}</div>
-                            <img class="score-img" src="icons/like.png" alt="Likes" title="Likes">
+                            <img class="score-img" src="icons/like.svg" alt="J'aimes" title="J'aimes">
                         </div>
                         <a href="${story["comments_url"]}" class="comment-wrapper">
                             <div class="comment">${numFormatter(story["comment_count"])}</div>
-                            <img class="comment-img" src="icons/messenger.png" alt="Messages"  title="Messages">
+                            <img class="comment-img" src="icons/comment.svg" alt="Commentaires"  title="Commentaires">
                         </a>
                     </div>
                 </div>
@@ -77,16 +85,10 @@ function getStoryTags(story) {
     // Returns an array of tag nodes to append into the story element
     let tags = ""
     story["tags"].forEach(el => {
-        // tagBtn = document.createElement("div")
-        // tagBtn.click
-        tags += `<div class="tags">${el}</div>` 
-        // el.addEventListener("click", (e) => {
-        //     disableSelected()
-        //     fetchFunc("t/"+el)
-        // })
+        tags += `<a href="https://hipsters-feed.herokuapp.com/t/${el}" class="tags">${el}</a>` 
     })
     return tags
 }
 
 // ----- Default behavior when page loads -----
-tabs[0].click() // Clicks on button Newest and triggers the function fetchFunc("newest")
+tabs[0].click() // Clicks on button "Nouveau" and triggers the function fetchFunc("newest")

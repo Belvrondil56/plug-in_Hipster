@@ -33,11 +33,3 @@ searchForm.addEventListener("submit", function(e){
     disableSelected()
     fetchFunc("t/"+userSearch);
 });
-
-
-//NOT WORKING YET Opens the autocomplete menu on focus
-document.getElementById("search-input").addEventListener("focus", (e) => {
-    console.log(e.currentTarget)
-    e.currentTarget.focus()
-})
-// ---------------------------- //

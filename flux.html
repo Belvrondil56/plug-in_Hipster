@@ -5,11 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hipsters</title>
+    <link rel="stylesheet" href="css/testTheme.css">
     <link rel="stylesheet" href="css/flux.css">
 </head>
 <body>
     <main id="content">
-        <img src="img/hispters-logo.png" alt="Hipsters logo"/>
+        <div class="logo">
+            <div class="logo-wrapper">
+                <img src="icons/hipsters-icon.svg" alt="Icône Hipsters">
+            </div>
+            <!-- <img src="img/hispters-logo.png" alt="Hipsters logo"/> -->
+            <a href="https://hipsters-feed.herokuapp.com/">Hipsters</a>
+        </div>
 
         <div id="tabs">
             <ul>
@@ -18,8 +25,8 @@
             </ul>
             <form action="#" id="search-form">
 
-                <div class="group">      
-                    <input id="search-input" type="search" required name="search" autocomplete="off" list="tag-list">
+                <div class="group">
+                    <input id="search-input" name="search" type="search" onmouseover="focus();" autocomplete="off" list="tag-list">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Tag</label>
