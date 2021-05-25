@@ -2,7 +2,7 @@ buildTagList();
 
 // Populates the datalist element with the list of available tags
 function buildTagList() {
-    fetch('http://127.0.0.1:3000/tags.json')
+    fetch(appLink+'/tags.json')
     .then(response => response.json())
     .then(data => {
         const tagDatalist = document.getElementById("tag-list");

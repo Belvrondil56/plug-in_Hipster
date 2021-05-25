@@ -1,11 +1,3 @@
-
-myStorage = window.localStorage;
-
-// window.localStorage.setItem("test", "daValue")
-console.log(myStorage)
-
-
-
 const tabs = document.getElementsByClassName("tabs");
 const content = document.getElementsByClassName("content")[0];
 
@@ -30,7 +22,7 @@ function disableSelected() { // Disables the tab that has the selected class if 
 }
 
 function fetchFunc(toFetch) {
-    fetch('http://127.0.0.1:3000/'+toFetch+'.json', {
+    fetch(appLink+'/'+toFetch+'.json', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'plain/text;charset=UTF-8'
@@ -39,9 +31,6 @@ function fetchFunc(toFetch) {
     .then(content.innerHTML = `<div class="lds-ring"><div></div><div></div><div></div><div></div></div>`)
     .then(response => response.json())
     .then(data => {
-    
-        console.log(data)
-
         let storyList = ""
         data.forEach(story => {
             date = new Date(story["created_at"])
@@ -50,12 +39,12 @@ function fetchFunc(toFetch) {
             `
             <div class="story-wrapper">
                 <div class="story">
-                    <a href="${story["short_id_url"]}"> <h2 class="title">${story["title"]}</h2> </a>
+                    <a href="${story["url"]}"> <h2 class="title">${story["title"]}</h2> </a>
                     <div class="author-date-wrapper">
                         <div class="tags-wrapper">
                             ${getStoryTags(story)}
                         </div>
-                        <div class="author"><strong>Auteur :</strong><a href="${story[""]}"> ${story["submitter_user"]["username"]}</a></div>
+                        <div class="author"><strong>Auteur :</strong><a href="${appLink + '/u/' + story["submitter_user"]["username"]}"> ${story["submitter_user"]["username"]}</a></div>
                         <div class="date"><strong>Posté :</strong> il y a ${timeSince(date)}</div>
                     </div>
                     <div class="score-comments-wrapper">
@@ -63,7 +52,7 @@ function fetchFunc(toFetch) {
                             <div class="score">${numFormatter(story["score"])}</div>
                             <img class="score-img" src="icons/like.svg" alt="J'aimes" title="J'aimes">
                         </div>
-                        <a href="${story["comments_url"]}" class="comment-wrapper">
+                        <a href="${appLink+story["comments_url"].replace("https://example.com", '')}" class="comment-wrapper">
                             <div class="comment">${numFormatter(story["comment_count"])}</div>
                             <img class="comment-img" src="icons/comment.svg" alt="Commentaires"  title="Commentaires">
                         </a>
@@ -72,8 +61,7 @@ function fetchFunc(toFetch) {
             </div>
             `
         });
-        content.innerHTML = storyList;
-    
+        content.innerHTML = storyList;    
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -85,7 +73,7 @@ function getStoryTags(story) {
     // Returns an array of tag nodes to append into the story element
     let tags = ""
     story["tags"].forEach(el => {
-        tags += `<a href="https://hipsters-feed.herokuapp.com/t/${el}" class="tags">${el}</a>` 
+        tags += `<a href="${appLink}/t/${el}" class="tags">${el}</a>` 
     })
     return tags
 }
