@@ -33,3 +33,5 @@ searchForm.addEventListener("submit", function(e){
     disableSelected()
     fetchFunc("t/"+userSearch);
 });
+
+searchInput.addEventListener("mouseenter", (e) => { e.currentTarget.focus() })

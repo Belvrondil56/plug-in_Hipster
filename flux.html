@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hipsters</title>
+    <title>Hipster</title>
     <link rel="stylesheet" href="css/testTheme.css">
     <link rel="stylesheet" href="css/flux.css">
 </head>
+
 <body>
     <main id="content">
         <div class="logo">
             <div class="logo-wrapper">
-                <img src="icons/hipsters-icon.svg" alt="Icône Hipsters">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448" style="enable-background:new 0 0 448 448;" xml:space="preserve">                <g><g><circle cx="64" cy="384" r="64" /></g></g><g><g><path d="M0,149.344v85.344c117.632,0,213.344,95.68,213.344,213.312h85.312C298.656,283.328,164.672,149.344,0,149.344z" /></g></g><g><g><path d="M0,0v85.344C200,85.344,362.688,248,362.688,448H448C448,200.96,247.04,0,0,0z" /></g></g></svg>
             </div>
             <!-- <img src="img/hispters-logo.png" alt="Hipsters logo"/> -->
             <a href="https://hipsters-feed.herokuapp.com/">Hipsters</a>
@@ -20,32 +22,46 @@
 
         <div id="tabs">
             <ul>
-                <li class="tabs" id="newest"><button id="newest-btn">Nouveau</button></li> 
-                <li class="tabs" id="hottest"><button id="hottest-btn">Populaire</button></li> 
+                <li class="tabs" id="newest"><button id="newest-btn">Nouveau</button></li>
+                <li class="tabs" id="hottest"><button id="hottest-btn">Populaire</button></li>
             </ul>
             <form action="#" id="search-form">
 
                 <div class="group">
-                    <input id="search-input" name="search" type="search" onmouseover="focus();" autocomplete="off" list="tag-list">
+                    <input id="search-input" name="search" type="search" autocomplete="off" list="tag-list">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Tag</label>
                     <datalist id="tag-list"></datalist>
+                    <button type="submit" class="btn-tag-submit">
+
+                        <svg class="search-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+                            style="enable-background:new 0 0 448 448;" xml:space="preserve">
+                            <g><g><circle cx="64" cy="384" r="64" /></g></g>
+                            <g><g><path d="M0,149.344v85.344c117.632,0,213.344,95.68,213.344,213.312h85.312C298.656,283.328,164.672,149.344,0,149.344z" /></g>
+                            </g><g><g><path d="M0,0v85.344C200,85.344,362.688,248,362.688,448H448C448,200.96,247.04,0,0,0z" /></g></g>
+                            <g></g><g> </g><g> </g><g> </g><g> </g><g> </g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+                        </svg>
+
+                        <div src="icons/hipsters-icon.svg" alt="Icône Hipsters" class="search-icon"></div>
+                    </button>
                 </div>
 
             </form>
         </div>
-        
+
         <div id="container">
             <div class="content">
 
             </div>
         </div>
-        
+
     </main>
 </body>
 
 <script src="js/tools.js"></script>
-<script src="js/flux.js"></script>
 <script src="js/filter.js"></script>
+<script src="js/flux.js"></script>
+
 </html>
